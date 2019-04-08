@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using NLog;
+using NLog.Extensions.Logging;
 using Planeat.Extensions;
+using System.IO;
 
 namespace Planeat
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
         {
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nLog.config"));
             Configuration = configuration;
         }
 
@@ -28,6 +27,8 @@ namespace Planeat
             services.ConfigureCors();
 
             services.ConfigureIISIntegration();
+
+            services.ConfigureLoggerService();
 
             services.AddMvc();
         }

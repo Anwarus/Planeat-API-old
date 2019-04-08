@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planeat", "Planeat\Planeat.csproj", "{D00D2EA0-69CA-48DE-B7F1-DCEAB5819075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planeat", "Planeat\Planeat.csproj", "{D00D2EA0-69CA-48DE-B7F1-DCEAB5819075}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{DBEA11B8-A0F3-4C2E-B7BE-B4281A379C2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{F6561893-0331-4AE9-9789-5C3BD9B10AC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{D00D2EA0-69CA-48DE-B7F1-DCEAB5819075}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D00D2EA0-69CA-48DE-B7F1-DCEAB5819075}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D00D2EA0-69CA-48DE-B7F1-DCEAB5819075}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBEA11B8-A0F3-4C2E-B7BE-B4281A379C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBEA11B8-A0F3-4C2E-B7BE-B4281A379C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBEA11B8-A0F3-4C2E-B7BE-B4281A379C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBEA11B8-A0F3-4C2E-B7BE-B4281A379C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6561893-0331-4AE9-9789-5C3BD9B10AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6561893-0331-4AE9-9789-5C3BD9B10AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6561893-0331-4AE9-9789-5C3BD9B10AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6561893-0331-4AE9-9789-5C3BD9B10AC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
