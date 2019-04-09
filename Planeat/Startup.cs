@@ -30,6 +30,8 @@ namespace Planeat
 
             services.ConfigureLoggerService();
 
+            services.ConfigureMySqlContext(Configuration);
+
             services.AddMvc();
         }
 

@@ -1,6 +1,9 @@
 ﻿using Contracts;
+using Entities;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Planeat.Extensions
@@ -28,6 +31,12 @@ namespace Planeat.Extensions
         public static void ConfigureLoggerService(this IServiceCollection services)
         {
             services.AddSingleton<ILoggerManager, LoggerManager>();
+        }
+
+        public static void ConfigureMySqlContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            var connectionString = configuration["MySqlConnection:ConnectionString"];
+            services.AddDbContext<RepositoryContext>(o => o.UseMySql(connectionString));
         }
     }
 }
