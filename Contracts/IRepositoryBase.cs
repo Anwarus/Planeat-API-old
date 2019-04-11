@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Contracts
 {
-    public interface IRepositoryBase
+    public interface IRepositoryBase<T>
     {
         IEnumerable<T> FindAll();
         IEnumerable<T> FindByCondiftion(Expression<Func<T, bool>> expression);

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Repository;
 
 namespace Planeat.Extensions
 {
@@ -37,6 +38,11 @@ namespace Planeat.Extensions
         {
             var connectionString = configuration["MySqlConnection:ConnectionString"];
             services.AddDbContext<RepositoryContext>(o => o.UseMySql(connectionString));
+        }
+
+        public static void ConfigureRepositoryWrapper(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
     }
 }

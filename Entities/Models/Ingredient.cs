@@ -12,7 +12,5 @@ namespace Entities.Models
 
         [Required]
         public string Name { get; set; }
-
-        public ICollection<Recipt> Recipts { get; set; }
     }
 }

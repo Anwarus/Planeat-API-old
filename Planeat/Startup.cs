@@ -32,6 +32,8 @@ namespace Planeat
 
             services.ConfigureMySqlContext(Configuration);
 
+            services.ConfigureRepositoryWrapper();
+
             services.AddMvc();
         }
 
