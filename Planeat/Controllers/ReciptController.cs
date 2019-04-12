@@ -2,27 +2,70 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Planeat.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/recipt")]
     public class ReciptController : Controller
     {
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private ILoggerManager _logger;
+        private IRepositoryWrapper _repository;
+        
+        public ReciptController(ILoggerManager logger, IRepositoryWrapper repository)
         {
-            return new string[] { "value1", "value2" };
+            _logger = logger;
+            _repository = repository;
         }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public IActionResult GetAllRecipts()
         {
-            return "value";
+            try
+            {
+                var recipts = _repository.Recipt.GetAllRecipts();
+
+                _logger.LogInfo("Returned all recipts from database");
+
+                return Ok(recipts);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside GetAllRecipts action: {ex.Message}");
+
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetReciptById(int id)
+        {
+            try
+            {
+                var recipt = _repository.Recipt.GetReciptById(id);
+
+                if(recipt == null)
+                {
+                    _logger.LogError($"Recipt with id: {id}, hasn't been found in data source");
+
+                    return NotFound();
+                }
+                else
+                {
+                    _logger.LogInfo($"Returned recipt with id: {id}");
+
+                    return Ok(recipt);
+                }
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside GetReciptById action: {ex.Message}");
+
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         // POST api/<controller>

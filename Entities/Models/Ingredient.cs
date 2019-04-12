@@ -8,7 +8,8 @@ namespace Entities.Models
     public class Ingredient
     {
         [Key]
-        public int IngrdientId { get; set; }
+        [Column("IngredientId")]
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }

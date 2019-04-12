@@ -8,7 +8,8 @@ namespace Entities.Models
     public class Recipt
     {
         [Key]
-        public int ReciptId { get; set; }
+        [Column("ReciptId")]
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }

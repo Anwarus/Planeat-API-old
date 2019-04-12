@@ -6,7 +6,7 @@ namespace Contracts
 {
     public interface IRepositoryWrapper
     {
-        IReciptRepository Recipt { get; set; }
-        IIngredientRepository Ingredient { get; set; }
+        IReciptRepository Recipt { get; }
+        IIngredientRepository Ingredient { get; }
     }
 }
