@@ -1,6 +1,5 @@
 ﻿using Contracts;
 using Entities;
-using Entities.ExtendedModels;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -28,13 +27,10 @@ namespace Repository
                 .FirstOrDefault();
         }
 
-        public ReciptIngredient GetReciptWithDetails(int reciptId)
+        public void CreateRecipt(Recipt recipt)
         {
-            return new ReciptIngredient(GetReciptById(reciptId))
-            {
-                Ingredients = RepositoryContext.Ingredients
-                    .Where(i => i.)
-            }
+            Create(recipt);
+            Save();
         }
     }
 }

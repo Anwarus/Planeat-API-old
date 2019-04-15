@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts;
+using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -40,7 +41,7 @@ namespace Planeat.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "ReciptById")]
         public IActionResult GetReciptById(int id)
         {
             try
@@ -70,8 +71,31 @@ namespace Planeat.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public ActionResult CreateRecipt([FromBody]Recipt recipt)
         {
+            try
+            {
+                if(recipt == null)
+                {
+                    _logger.LogError("Recipt object sent from client is null");
+                    return BadRequest("Recipt object is null");
+                }
+
+                if(!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid recipt object sent from client");
+                    return BadRequest("Invalid recipt object");
+                }
+
+                _repository.Recipt.CreateRecipt(recipt);
+
+                return CreatedAtRoute("ReciptById", new { id = recipt.Id }, recipt);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside CreateOwner action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         // PUT api/<controller>/5
