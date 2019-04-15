@@ -28,11 +28,12 @@ namespace Repository
                 .FirstOrDefault();
         }
 
-        public ReciptExtended GetReciptWithDetails(int reciptId)
+        public ReciptIngredient GetReciptWithDetails(int reciptId)
         {
-            return new ReciptExtended(GetReciptById(reciptId))
+            return new ReciptIngredient(GetReciptById(reciptId))
             {
-                
+                Ingredients = RepositoryContext.Ingredients
+                    .Where(i => i.)
             }
         }
     }

@@ -10,6 +10,6 @@ namespace Contracts
     {
         IEnumerable<Recipt> GetAllRecipts();
         Recipt GetReciptById(int reciptId);
-        ReciptExtended GetReciptWithDetails(int reciptId);
+        ReciptIngredient GetReciptWithDetails(int reciptId);
     }
 }
